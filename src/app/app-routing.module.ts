@@ -34,6 +34,10 @@ const routes: Routes = [{ path:  '', redirectTo:  'organisationslist', pathMatch
   component:  OrganisationcreateComponent
 },
 {
+  path:  'updateactivity/:id',
+  component:  ActivityeditComponent
+},
+{
   path:  'updateorganisation/:id',
   component:  EditorganisationComponent
 }];

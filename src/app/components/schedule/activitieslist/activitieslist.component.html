@@ -1,0 +1,43 @@
+
+  <div class="container custom-container-2">
+
+        <!-- Show it when there is no activities -->
+        <div class="no-data text-center" *ngIf="activities.length == 0">
+          <p>There are no activities added yet!</p>
+          <button class="btn btn-outline-primary" routerLink="/">Add Activity</button>
+        </div>
+      
+        <!-- activities list table, it hides when there is no employee -->
+        <div *ngIf="activities.length !== 0">
+          <h3 class="mb-3 text-center">Organisations List</h3>
+      
+          <div class="col-md-12">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">OD</th>
+                    <th scope="col">ES</th>
+                    <th scope="col">EF</th>
+                    <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let activity of activities.activities">
+                        <td> {{ activity.id }} </td>
+                        <td> {{ activity.code }} </td>
+                        <td> {{ activity.name }} </td>
+                        <td> {{ activity.od }} </td>
+                        <td> {{ activity.es | date:'d-LLL-y' }} </td>
+                        <td> {{ activity.ef | date:'d-LLL-y'}} </td>
+                  <td>
+                    <span class="edit" routerLink="/updateactivity/{{activity.id}}">Edit</span>
+                    <!-- <span class="delete" (click)="deleteEmployee(activity.id)">Delete</span> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      
