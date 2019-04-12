@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from  '../api.service';
+import { ApiService } from  '../../../services/api.service';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { ApiService } from  '../api.service';
 })
 export class OrganisationslistComponent implements OnInit {
 
-private  organisations:  Array<object> = [];
+organisations:  Array<object> = [];
 constructor(private  apiService:  ApiService) { }
 ngOnInit() {
     this.getContacts();

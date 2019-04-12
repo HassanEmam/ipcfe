@@ -1,0 +1,29 @@
+<h1>
+    Create Organisation
+    </h1>
+    <button (click)="createOrganisation()">
+        Create Organisation
+    </button>
+
+    <div class="container custom-container">
+        <div class="col-md-12">
+          <h3 class="mb-3 text-center">Create Organisation</h3>
+      
+          <div class="form-group">
+            <input type="text" [(ngModel)]="organisationDetails.code" class="form-control" placeholder="Code">
+          </div>
+      
+          <div class="form-group">
+            <input type="text" [(ngModel)]="organisationDetails.name" class="form-control" placeholder="Name">
+          </div>
+      
+          <div class="form-group">
+            <input type="text" [(ngModel)]="organisationDetails.description" class="form-control" placeholder="Description">
+          </div>
+      
+          <div class="form-group">
+            <button class="btn btn-success btn-lg btn-block" (click)="addOrganisation()">Create Employee</button>
+          </div>
+      
+        </div>
+      </div>

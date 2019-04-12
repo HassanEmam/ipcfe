@@ -1,0 +1,26 @@
+add routing to app-routing module
+	import the component
+	add route path
+
+add method to api.service
+
+in the component.ts
+	import { Router, ActivatedRoute} from '@angular/router';
+	import { ApiService } from '../api.service';
+	after export class add variables
+	id = this.actRoute.snapshot.params['id'];
+	organisationData: any = {};
+
+	in the constructor intiate instances of api, ActivateRoute and Router
+	constructor(public restApi: ApiService,
+    	public actRoute: ActivatedRoute,
+    	public router: Router) { 
+      
+    	}
+
+
+	add the function
+
+	add HTML
+
+

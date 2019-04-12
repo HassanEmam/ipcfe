@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService} from '../api.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { ApiService} from '../../../services/api.service';
+import { Router} from '@angular/router'
 
 @Component({
   selector: 'app-organisationcreate',
@@ -7,8 +8,8 @@ import { ApiService} from '../api.service';
   styleUrls: ['./organisationcreate.component.css']
 })
 export class OrganisationcreateComponent implements OnInit {
-
-  constructor(private  apiService:  ApiService) { }
+  @Input() organisationDetails = { name: '', email: '', phone: 0 }
+  constructor(private  apiService:  ApiService, public router: Router) { }
 
   ngOnInit() {
   }
@@ -24,5 +25,11 @@ export class OrganisationcreateComponent implements OnInit {
     this.apiService.createOrganisation(organisation).subscribe((response) => {
         console.log(response);
     });
+  };
+
+  addOrganisation(){
+    this.apiService.createOrganisation(this.organisationDetails).subscribe((data: {}) => {
+      this.router.navigate(['/employees-list'])
+    })
   };
 }
