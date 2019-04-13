@@ -55,12 +55,32 @@ export class ApiService {
       catchError(this.handleError)
     )
   }
+  createActivity(activity){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    return  this.httpClient.post(`${this.API_URL}/activity`,activity)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  getSchedules(){
+    return  this.httpClient.get(`${this.API_URL}/schedules`)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
 
   handleError(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
       // Get client-side error
-      errorMessage = error.error.message;
+      errorMessage = error.headers.error.message;
     } else {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;

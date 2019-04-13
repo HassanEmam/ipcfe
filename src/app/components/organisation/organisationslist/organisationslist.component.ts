@@ -15,9 +15,10 @@ ngOnInit() {
     this.getContacts();
 }
 public  getContacts(){
+    
     this.apiService.getOrganisations().subscribe((data:  Array<object>) => {
         this.organisations  =  data;
-        console.log(data);
+        console.log(this.organisations);
     });
 }
 }

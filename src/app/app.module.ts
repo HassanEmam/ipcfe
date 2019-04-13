@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { EditorganisationComponent } from './components/organisation/editorganis
 import { GetorganisationComponent } from './components/organisation/getorganisation/getorganisation.component';
 import { GetactivityComponent } from './components/schedule/getactivity/getactivity.component';
 import { ActivityeditComponent } from './components/schedule/activityedit/activityedit.component';
+import { CreateactivityComponent } from './components/schedule/createactivity/createactivity.component';
 
 @NgModule({
   declarations: [
@@ -22,15 +24,20 @@ import { ActivityeditComponent } from './components/schedule/activityedit/activi
     EditorganisationComponent,
     GetorganisationComponent,
     GetactivityComponent,
-    ActivityeditComponent
+    ActivityeditComponent,
+    CreateactivityComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ActivityeditComponent
+  ]
 })
 export class AppModule { }

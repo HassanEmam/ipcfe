@@ -1,4 +1,12 @@
-<div class="container custom-container">
+<div class="modal-header">
+  <h4 class="modal-title">Modal Title</h4>
+  <button type="button" class="close" aria-label="Close"
+   (click)="activeModal.dismiss('Cross click')">
+  </button>
+</div>
+
+
+<div class="modal-body container custom-container">
     <div class="col-md-6">
       
       <h3 class="mb-3 text-center">Update Activity</h3>
@@ -23,3 +31,8 @@
     </div>
   </div>
   
+<div class="modal-footer">
+  <button (click)="activeModal.dismiss('Close clicked')">
+    Close
+  </button>
+</div>

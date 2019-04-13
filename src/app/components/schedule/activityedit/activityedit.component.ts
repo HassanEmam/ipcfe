@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @Component({
@@ -14,7 +16,8 @@ export class ActivityeditComponent implements OnInit {
 
   constructor(public restApi: ApiService,
     public actRoute: ActivatedRoute,
-    public router: Router) { }
+    public router: Router,
+    public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
     this.restApi.getActivity(this.id).subscribe((data: {}) => {
@@ -22,13 +25,20 @@ export class ActivityeditComponent implements OnInit {
       
     }
 
+  closeModal() {
+      this.activeModal.close('Modal Closed');
+      this.router.navigate(['/activitieslist'])
+      //location.reload();
+    }
+
   updateActivity() {
     console.log(this.activityData);
-    if(window.confirm('Are you sure, you want to update?')){
       this.restApi.updateActivity(this.id, this.activityData).subscribe(data => {
         this.router.navigate(['/activitieslist'])
+        this.closeModal();
+        
+        
       })
-    }
   }
 
 }

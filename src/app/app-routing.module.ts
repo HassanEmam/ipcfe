@@ -7,6 +7,7 @@ import { EditorganisationComponent } from './components/organisation/editorganis
 import { GetorganisationComponent } from './components/organisation/getorganisation/getorganisation.component';
 import { GetactivityComponent } from './components/schedule/getactivity/getactivity.component';
 import { ActivityeditComponent } from './components/schedule/activityedit/activityedit.component';
+import { CreateactivityComponent } from './components/schedule/createactivity/createactivity.component';
 
 const routes: Routes = [{ path:  '', redirectTo:  'organisationslist', pathMatch:  'full' },
 {
@@ -31,6 +32,14 @@ const routes: Routes = [{ path:  '', redirectTo:  'organisationslist', pathMatch
 },
 {
   path:  'createorganisation',
+  component:  OrganisationcreateComponent
+},
+{
+  path:  'createactivity',
+  component:  CreateactivityComponent
+},
+{
+  path:  'createactivity',
   component:  OrganisationcreateComponent
 },
 {

@@ -8,7 +8,7 @@ import { Router} from '@angular/router'
   styleUrls: ['./organisationcreate.component.css']
 })
 export class OrganisationcreateComponent implements OnInit {
-  @Input() organisationDetails = { name: '', email: '', phone: 0 }
+  @Input() organisationDetails = { }
   constructor(private  apiService:  ApiService, public router: Router) { }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class OrganisationcreateComponent implements OnInit {
 
   addOrganisation(){
     this.apiService.createOrganisation(this.organisationDetails).subscribe((data: {}) => {
-      this.router.navigate(['/employees-list'])
+      this.router.navigate(['/organisationslist'])
     })
   };
 }
