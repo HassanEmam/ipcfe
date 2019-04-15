@@ -8,6 +8,7 @@ import { GetorganisationComponent } from './components/organisation/getorganisat
 import { GetactivityComponent } from './components/schedule/getactivity/getactivity.component';
 import { ActivityeditComponent } from './components/schedule/activityedit/activityedit.component';
 import { CreateactivityComponent } from './components/schedule/createactivity/createactivity.component';
+import { GanttComponent } from './components/gantt/gantt.component';
 
 const routes: Routes = [{ path:  '', redirectTo:  'organisationslist', pathMatch:  'full' },
 {
@@ -33,6 +34,10 @@ const routes: Routes = [{ path:  '', redirectTo:  'organisationslist', pathMatch
 {
   path:  'createorganisation',
   component:  OrganisationcreateComponent
+},
+{
+  path:  'gantt',
+  component:  GanttComponent
 },
 {
   path:  'createactivity',

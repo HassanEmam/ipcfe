@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgGanttEditorModule } from 'ng-gantt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { GetorganisationComponent } from './components/organisation/getorganisat
 import { GetactivityComponent } from './components/schedule/getactivity/getactivity.component';
 import { ActivityeditComponent } from './components/schedule/activityedit/activityedit.component';
 import { CreateactivityComponent } from './components/schedule/createactivity/createactivity.component';
+import { GanttComponent } from './components/gantt/gantt.component';
 
 @NgModule({
   declarations: [
@@ -25,13 +27,16 @@ import { CreateactivityComponent } from './components/schedule/createactivity/cr
     GetorganisationComponent,
     GetactivityComponent,
     ActivityeditComponent,
-    CreateactivityComponent
+    CreateactivityComponent,
+    GanttComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgGanttEditorModule,
+    ReactiveFormsModule,
     NgbModule.forRoot()
   ],
   providers: [],

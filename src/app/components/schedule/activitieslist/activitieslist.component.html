@@ -11,11 +11,15 @@
         <div *ngIf="activities.length !== 0">
           <h3 class="mb-3 text-center">Organisations List</h3>
       
-          <div class="col-md-12">
-            <table class="table table-bordered">
+          <div class="dash-table-container">
+            <table class="table table-hover">
               <thead>
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">ID
+                      <i class="fas fa-sort-amount-down sorting-icon"></i>
+                      <i class="fas fa-sort-amount-up sorting-icon" style="display: none;"></i>
+                      <i class="fas fa-sort sorting-icon" style="display: none;"></i>
+                    </th>
                     <th scope="col">Code</th>
                     <th scope="col">Name</th>
                     <th scope="col">OD</th>
@@ -25,14 +29,38 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let activity of activities.activities">
-                        <td> {{ activity.id }} </td>
-                        <td> {{ activity.code }} </td>
-                        <td> {{ activity.name }} </td>
-                        <td> {{ activity.od }} </td>
-                        <td> {{ activity.es | date:'d-LLL-y' }} </td>
-                        <td> {{ activity.ef | date:'d-LLL-y'}} </td>
-                  <td>
+                <tr *ngFor="let activity of activities.activities; let id = index;" (click)="RowSelected($event, activity);" [class.selected]="activity.code === selectedActivity">
+                    <td> 
+                      <span contenteditable="true" (keyup)="changeValue(id, 'id', $event)" (blur)="updateList(id, 'id', $event)"> 
+                        {{ activity.id }}
+                      </span> 
+                    </td>
+                    <td> 
+                      <span contenteditable="true" (keyup)="changeValue(id, 'code', $event)" (blur)="updateList(id, 'code', $event)"> 
+                        {{ activity.code }} 
+                      </span>
+                    </td>
+                    <td> 
+                      <span contenteditable="true" (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)">     
+                        {{ activity.name }} 
+                       </span>
+                    </td>
+                    <td> 
+                      <span contenteditable="true" (keyup)="changeValue(id, 'od', $event)" (blur)="updateList(id, 'od', $event)">
+                        {{ activity.od }} 
+                      </span>
+                    </td>
+                    <td>
+                      <span contenteditable="true" (keyup)="changeValue(id, 'es', $event)" (blur)="updateList(id, 'es', $event)">
+                        {{ activity.es | date:'d-LLL-y' }} 
+                      </span>
+                    </td>
+                    <td> 
+                        <span contenteditable="true" (keyup)="changeValue(id, 'ef', $event)" (blur)="updateList(id, 'ef', $event)">
+                          {{ activity.ef | date:'d-LLL-y'}} 
+                        </span>
+                    </td>
+                    <td>
                     <span class="edit" (click)="openFormModal(activity)">Edit</span>
                     <!-- <span class="delete" (click)="deleteEmployee(activity)">Delete</span> -->
                   </td>
