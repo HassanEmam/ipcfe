@@ -2,33 +2,52 @@
   <div class="col-md-6">
     
     <h3 class="mb-3 text-center">Create Activity</h3>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div [formGroup]="registerForm" class="form-group">
+      <input formControlName="code" type="text" [(ngModel)]="activityData.code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.code.errors }" placeholder="code">
+      <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
+        <div *ngIf="f.code.errors.required">Code is required</div>
+    </div>
+  </div>
 
-    <div class="form-group">
-      <input type="text" [(ngModel)]="activityData.code" class="form-control" placeholder="code">
+    <div [formGroup]="registerForm" class="form-group">
+      <input formControlName="name" type="text" [(ngModel)]="activityData.name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Name">
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Name is required</div>
+    </div>
     </div>
 
-    <div class="form-group">
-      <input type="text" [(ngModel)]="activityData.name" class="form-control" placeholder="Name">
-    </div>
-
-    <div class="form-group">
-      <input type="text" [(ngModel)]="activityData.od" class="form-control" placeholder="duration">
-    </div>
-
-    <div class="form-group">
-      <select [(ngModel)]="activityData.schedule_id">
-        <option *ngFor="let s of schedules.schedules" [ngValue]="s.id">{{s.name}}</option>
-      </select>
-    </div>
-    <div class="form-group">
-        <input type="date" [(ngModel)]="activityData.es" class="form-control" >
+    <div [formGroup]="registerForm" class="form-group">
+      <input formControlName="od" type="number" [(ngModel)]="activityData.od" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.od.errors }" placeholder="duration">
+      <div *ngIf="submitted && f.od.errors" class="invalid-feedback">
+        <div *ngIf="f.od.errors.required">Duration is required and must be greater than zero</div>
       </div>
-      <div class="form-group">
-          <input type="date" [(ngModel)]="activityData.ef" class="form-control" placeholder="date">
-        </div>
-    <div class="form-group">
-      <button class="btn btn-success btn-lg btn-block" (click)="updateActivity()">Create Activity</button>
     </div>
     
+
+    <div [formGroup]="registerForm" class="form-group">
+      <select formControlName="schedule_id" [(ngModel)]="activityData.schedule_id" [ngClass]="{ 'is-invalid': submitted && f.schedule_id.errors }" >
+        <option *ngFor="let s of schedules.schedules" [ngValue]="s.id">{{s.name}}</option>
+      </select>
+      <div *ngIf="submitted && f.schedule_id.errors" class="invalid-feedback">
+        <div *ngIf="f.schedule_id.errors.required">schedule is required </div>
+      </div>
+    </div>
+    <div [formGroup]="registerForm" class="form-group">
+        <input formControlName="dateFrom" type="date" [(ngModel)]="activityData.es" [ngClass]="{ 'is-invalid': submitted && f.dateFrom.errors }" class="form-control" >
+        <div *ngIf="submitted && f.dateFrom.errors" class="invalid-feedback">
+          <div *ngIf="f.dateFrom.errors.required">Date is required </div>
+        </div>
+      </div>
+      <div [formGroup]="registerForm" class="form-group">
+          <input formControlName="dateTo" type="date" [(ngModel)]="activityData.ef" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateTo.errors }" placeholder="date">
+          <div *ngIf="submitted && f.dateTo.errors" class="invalid-feedback">
+            <div *ngIf="f.dateFrom.errors.required">Date is required </div>
+          </div>
+      </div>
+    <div [formGroup]="registerForm" class="form-group">
+      <button class="btn btn-success btn-lg btn-block" >Create Activity</button>
+    </div>
+    </form>
   </div>
 </div>

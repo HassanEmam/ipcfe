@@ -1,4 +1,4 @@
-add routing to app-routing module
+public add routing to app-routing module
 	import the component
 	add route path
 
