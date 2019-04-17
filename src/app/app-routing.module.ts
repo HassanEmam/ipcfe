@@ -20,7 +20,7 @@ const routes: Routes = [{ path:  '', redirectTo:  'organisationslist', pathMatch
   path:  'activitieslist',
   component:  ActivitieslistComponent,
   children:[
-    {path: ':id', component: GetactivityComponent }
+    {path: 'detail/:id', component: GetactivityComponent }
   ]
 },
 {

@@ -1,4 +1,73 @@
+<!-- 
+
 <p>
-        getactivity works! {{ id }}
-      </p>
-      
+   getactivity works! {{ id }}
+</p> -->
+   
+
+
+  <div class="container">
+      <ngb-tabset type="pills">
+         <ngb-tab title="Activity Details">
+            <ng-template ngbTabContent>
+               <p>Star ratings using ng-bootstrap</p>
+               <div class="container custom-container">
+                  <div class="col-md-6">
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div [formGroup]="registerForm" class="form-group">
+                      <label for="code">Code</label>
+                      <input formControlName="code" type="text" [(ngModel)]="activityData.code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.code.errors }" placeholder="code">
+                      <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
+                        <div *ngIf="f.code.errors.required">Code is required</div>
+                    </div>
+                  </div>
+                
+                    <div [formGroup]="registerForm" class="form-group">
+                      <input formControlName="name" type="text" [(ngModel)]="activityData.name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Name">
+                      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                        <div *ngIf="f.name.errors.required">Name is required</div>
+                    </div>
+                    </div>
+                
+                    <div [formGroup]="registerForm" class="form-group">
+                      <input formControlName="od" type="number" [(ngModel)]="activityData.od" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.od.errors }" placeholder="duration">
+                      <div *ngIf="submitted && f.od.errors" class="invalid-feedback">
+                        <div *ngIf="f.od.errors.required">Duration is required and must be greater than zero</div>
+                      </div>
+                    </div>
+                    
+                    <div [formGroup]="registerForm" class="form-group">
+                        <input formControlName="dateFrom" type="date" [value]="activityData.es | date:'yyyy-MM-dd'" (input)="activityData.es=parseDate($event.target.value)" [ngClass]="{ 'is-invalid': submitted && f.dateFrom.errors }" class="form-control" >
+                        <div *ngIf="submitted && f.dateFrom.errors" class="invalid-feedback">
+                          <div *ngIf="f.dateFrom.errors.required">Date is required </div>
+                        </div>
+                      </div>
+                      <div [formGroup]="registerForm" class="form-group">
+                          <input formControlName="dateTo" type="date" [value]="activityData.ef | date:'yyyy-MM-dd'" (input)="activityData.es=parseDate($event.target.value)" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateTo.errors }" placeholder="date">
+                          <div *ngIf="submitted && f.dateTo.errors" class="invalid-feedback">
+                            <div *ngIf="f.dateFrom.errors.required">Date is required </div>
+                          </div>
+                      </div>
+                    <div [formGroup]="registerForm" class="form-group">
+                      <button class="btn btn-success btn-lg btn-block" >Create Activity</button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+            </ng-template>
+         </ngb-tab>
+      <ngb-tab>
+         <ng-template ngbTabTitle>Resources</ng-template>
+         <ng-template ngbTabContent>
+            <p>Resources module is currently being developed</p>
+            
+      </ng-template>
+   </ngb-tab>
+   <ngb-tab title="Relationships">
+      <ng-template ngbTabContent>
+         <p>Reslationships module is currently being developed</p>
+         
+      </ng-template>
+    </ngb-tab>
+   </ngb-tabset>
+   </div>
