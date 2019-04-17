@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from  '../../../services/api.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivityeditComponent } from '../activityedit/activityedit.component';
+import { GetactivityComponent } from '../getactivity/getactivity.component'
 import { Router } from '@angular/router';
 import { forEach } from '@angular/router/src/utils/collection';
 
@@ -11,7 +12,7 @@ import { forEach } from '@angular/router/src/utils/collection';
   styleUrls: ['./activitieslist.component.css']
 })
 export class ActivitieslistComponent implements OnInit {
-  activities:  Array<any> = [];
+  activities:  any = {};
   selectedActivity: any = {};
   editField: string;
   constructor(private  apiService:  ApiService,
@@ -19,6 +20,7 @@ export class ActivitieslistComponent implements OnInit {
     private modalService: NgbModal) { }
   ngOnInit() {
       this.getContacts();
+      console.log('Init: ', this.activities);
   }
   public  getContacts(){
       this.apiService.getActivities().subscribe((data:  Array<object>) => {
@@ -41,6 +43,7 @@ export class ActivitieslistComponent implements OnInit {
   RowSelected(event: any, activity:any){
     
     this.selectedActivity= activity.code;   // declare variable in component.
+    this.router.navigateByUrl('/activitieslist/' + activity.id)
     // this.selectedActivity.flag = !this.selectedActivity.flag;
     //console.log(this.selectedActivity);
     }

@@ -10,6 +10,7 @@ import { ActivityeditComponent } from './components/schedule/activityedit/activi
 import { CreateactivityComponent } from './components/schedule/createactivity/createactivity.component';
 import { GanttComponent } from './components/gantt/gantt.component';
 
+
 const routes: Routes = [{ path:  '', redirectTo:  'organisationslist', pathMatch:  'full' },
 {
     path:  'organisationslist',
@@ -17,15 +18,14 @@ const routes: Routes = [{ path:  '', redirectTo:  'organisationslist', pathMatch
 },
 {
   path:  'activitieslist',
-  component:  ActivitieslistComponent
+  component:  ActivitieslistComponent,
+  children:[
+    {path: ':id', component: GetactivityComponent }
+  ]
 },
 {
   path:  'organisation/:id',
   component:  GetorganisationComponent
-},
-{
-  path:  'activity/:id',
-  component:  GetactivityComponent
 },
 {
   path:  'editactivity/:id',

@@ -2,13 +2,13 @@
   <div class="container custom-container-2">
 
         <!-- Show it when there is no activities -->
-        <div class="no-data text-center" *ngIf="activities.length == 0">
+        <div class="no-data text-center" *ngIf="activities.activities.length == 0">
           <p>There are no activities added yet!</p>
           <button class="btn btn-outline-primary" routerLink="/">Add Activity</button>
         </div>
       
         <!-- activities list table, it hides when there is no employee -->
-        <div *ngIf="activities.length !== 0">
+        <div *ngIf="activities.activities.length !== 0">
           <h3 class="mb-3 text-center">Organisations List</h3>
       
           <div class="dash-table-container">
@@ -29,11 +29,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let activity of activities.activities; let id = index;" (click)="RowSelected($event, activity);" [class.selected]="activity.code === selectedActivity">
+                
+                <tr *ngFor="let activity of activities.activities; let id = index;" (click)="RowSelected(event,activity)" [class.selected]="activity.code === selectedActivity" >
                     <td> 
-                      <span contenteditable="true" (keyup)="changeValue(id, 'id', $event)" (blur)="updateList(id, 'id', $event)"> 
+                      
                         {{ activity.id }}
-                      </span> 
+                      
                     </td>
                     <td> 
                       <span contenteditable="true" (keyup)="changeValue(id, 'code', $event)" (blur)="updateList(id, 'code', $event)"> 
@@ -68,4 +69,4 @@
               </tbody>
             </table>
           </div>
-      
+      <router-outlet></router-outlet>
