@@ -10,10 +10,10 @@
       <ngb-tabset type="pills">
          <ngb-tab title="Activity Details">
             <ng-template ngbTabContent>
-               <p>Star ratings using ng-bootstrap</p>
+               <div class="tab-cont">
                <div class="container custom-container">
                   <div class="col-md-6">
-                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <form [formGroup]="registerForm" class="form-inline" (ngSubmit)="onSubmit()">
                     <div [formGroup]="registerForm" class="form-group">
                       <label for="code">Code</label>
                       <input formControlName="code" type="text" [(ngModel)]="activityData.code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.code.errors }" placeholder="code">
@@ -54,19 +54,24 @@
                     </form>
                   </div>
                 </div>
+              </div>
             </ng-template>
          </ngb-tab>
       <ngb-tab>
          <ng-template ngbTabTitle>Resources</ng-template>
          <ng-template ngbTabContent>
-            <p>Resources module is currently being developed</p>
+            <div class="tab-cont">
+                <p>Resources module is currently being developed</p>
+            </div>
+            
             
       </ng-template>
    </ngb-tab>
    <ngb-tab title="Relationships">
       <ng-template ngbTabContent>
+        <div class="tab-cont">
          <p>Reslationships module is currently being developed</p>
-         
+        </div>
       </ng-template>
     </ngb-tab>
    </ngb-tabset>

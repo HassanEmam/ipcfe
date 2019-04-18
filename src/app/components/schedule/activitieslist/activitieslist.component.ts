@@ -43,7 +43,7 @@ export class ActivitieslistComponent implements OnInit {
   RowSelected(event: any, activity:any){
     
     this.selectedActivity= activity.code;   // declare variable in component.
-    this.router.navigateByUrl('/activitieslist/' + activity.id)
+    
     // this.selectedActivity.flag = !this.selectedActivity.flag;
     //console.log(this.selectedActivity);
     }
