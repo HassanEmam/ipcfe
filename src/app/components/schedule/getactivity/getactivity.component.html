@@ -13,7 +13,7 @@
                <div class="tab-cont border border-primary">
                <div class="container custom-container">
                   <div class="col-md-12">
-                    <form [formGroup]="registerForm" class="form-inline" (ngSubmit)="onSubmit()">
+                    <form [formGroup]="registerForm" class="form-inline" (ngSubmit)="updateActivity()">
                     
                       <div class="form-row">
                         <div class="col">
@@ -48,7 +48,7 @@
                       <div class="col">
                         <div [formGroup]="registerForm" class="form-group col-md-6">
                           <label for="dateFrom">Start</label>
-                          <input formControlName="dateFrom" type="date" [value]="activityData.es | date:'yyyy-MM-dd'" (input)="activityData.es=parseDate($event.target.value)" [ngClass]="{ 'is-invalid': submitted && f.dateFrom.errors }" class="form-control" >
+                          <input formControlName="dateFrom" type="date" [value]="activityData.es | date:'yyyy-MM-dd'" (input)="activityData.es=$event.target.value" [ngClass]="{ 'is-invalid': submitted && f.dateFrom.errors }" class="form-control" >
                           <div *ngIf="submitted && f.dateFrom.errors" class="invalid-feedback">
                             <div *ngIf="f.dateFrom.errors.required">Date is required </div>
                           </div>
@@ -56,10 +56,10 @@
                     </div>
                     <div class="col">
                         <div [formGroup]="registerForm" class="form-group col-md-6">
-                          <label for="dateTo">Start</label>
-                          <input formControlName="dateTo" type="date" [value]="activityData.ef | date:'yyyy-MM-dd'" (input)="activityData.es=parseDate($event.target.value)" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateTo.errors }" placeholder="date">
+                          <label for="dateTo">Finish</label>
+                          <input formControlName="dateTo" type="date" [value]="activityData.ef | date:'yyyy-MM-dd'" (input)="activityData.ef=parseDate($event.target.value)" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateTo.errors }" placeholder="date">
                           <div *ngIf="submitted && f.dateTo.errors" class="invalid-feedback">
-                            <div *ngIf="f.dateFrom.errors.required">Date is required </div>
+                            <div *ngIf="f.dateTo.errors.required">Date is required </div>
                           </div>
                       </div>
                     </div>

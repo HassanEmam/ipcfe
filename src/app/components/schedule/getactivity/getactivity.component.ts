@@ -50,4 +50,12 @@ export class GetactivityComponent implements OnInit {
       
     });
   }
+
+  updateActivity() {
+    console.log(this.activityData);
+      //this.activityData.es = this.activityData.es.getDate();
+      this.restApi.updateActivity(this.id, this.activityData).subscribe(data => {
+        this.router.navigate(['/activitieslist/detail/'+this.id])
+      })
+  }
 }
