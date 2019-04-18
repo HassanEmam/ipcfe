@@ -10,46 +10,62 @@
       <ngb-tabset type="pills">
          <ngb-tab title="Activity Details">
             <ng-template ngbTabContent>
-               <div class="tab-cont">
+               <div class="tab-cont border border-primary">
                <div class="container custom-container">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <form [formGroup]="registerForm" class="form-inline" (ngSubmit)="onSubmit()">
-                    <div [formGroup]="registerForm" class="form-group">
-                      <label for="code">Code</label>
-                      <input formControlName="code" type="text" [(ngModel)]="activityData.code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.code.errors }" placeholder="code">
-                      <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
-                        <div *ngIf="f.code.errors.required">Code is required</div>
-                    </div>
-                  </div>
-                
-                    <div [formGroup]="registerForm" class="form-group">
-                      <input formControlName="name" type="text" [(ngModel)]="activityData.name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Name">
-                      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                        <div *ngIf="f.name.errors.required">Name is required</div>
-                    </div>
-                    </div>
-                
-                    <div [formGroup]="registerForm" class="form-group">
-                      <input formControlName="od" type="number" [(ngModel)]="activityData.od" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.od.errors }" placeholder="duration">
-                      <div *ngIf="submitted && f.od.errors" class="invalid-feedback">
-                        <div *ngIf="f.od.errors.required">Duration is required and must be greater than zero</div>
-                      </div>
-                    </div>
                     
-                    <div [formGroup]="registerForm" class="form-group">
-                        <input formControlName="dateFrom" type="date" [value]="activityData.es | date:'yyyy-MM-dd'" (input)="activityData.es=parseDate($event.target.value)" [ngClass]="{ 'is-invalid': submitted && f.dateFrom.errors }" class="form-control" >
-                        <div *ngIf="submitted && f.dateFrom.errors" class="invalid-feedback">
-                          <div *ngIf="f.dateFrom.errors.required">Date is required </div>
+                      <div class="form-row">
+                        <div class="col">
+                          <div [formGroup]="registerForm" class="form-group  col-md-6">
+                            <label for="code">Code</label>
+                            <input formControlName="code" type="text" [(ngModel)]="activityData.code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.code.errors }" placeholder="code">
+                            <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
+                              <div *ngIf="f.code.errors.required">Code is required</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div [formGroup]="registerForm" class="form-group col-md-6">
+                            <label for="name">Name</label>
+                            <input formControlName="name" type="text" [(ngModel)]="activityData.name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Name">
+                            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                              <div *ngIf="f.name.errors.required">Name is required</div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col">
+                        <div [formGroup]="registerForm" class="form-group col-md-6">
+                          <label for="od">Duration</label>
+                          <input id="od" formControlName="od" type="number" [(ngModel)]="activityData.od" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.od.errors }" placeholder="duration">
+                          <div *ngIf="submitted && f.od.errors" class="invalid-feedback">
+                            <div *ngIf="f.od.errors.required">Duration is required and must be greater than zero</div>
+                          </div>
                         </div>
                       </div>
-                      <div [formGroup]="registerForm" class="form-group">
+                      <div class="col">
+                        <div [formGroup]="registerForm" class="form-group col-md-6">
+                          <label for="dateFrom">Start</label>
+                          <input formControlName="dateFrom" type="date" [value]="activityData.es | date:'yyyy-MM-dd'" (input)="activityData.es=parseDate($event.target.value)" [ngClass]="{ 'is-invalid': submitted && f.dateFrom.errors }" class="form-control" >
+                          <div *ngIf="submitted && f.dateFrom.errors" class="invalid-feedback">
+                            <div *ngIf="f.dateFrom.errors.required">Date is required </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                        <div [formGroup]="registerForm" class="form-group col-md-6">
+                          <label for="dateTo">Start</label>
                           <input formControlName="dateTo" type="date" [value]="activityData.ef | date:'yyyy-MM-dd'" (input)="activityData.es=parseDate($event.target.value)" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateTo.errors }" placeholder="date">
                           <div *ngIf="submitted && f.dateTo.errors" class="invalid-feedback">
                             <div *ngIf="f.dateFrom.errors.required">Date is required </div>
                           </div>
                       </div>
+                    </div>
                     <div [formGroup]="registerForm" class="form-group">
-                      <button class="btn btn-success btn-lg btn-block" >Create Activity</button>
+                      <button class="btn btn-success btn-lg btn-block" >Save</button>
+                    </div>
                     </div>
                     </form>
                   </div>
@@ -60,7 +76,7 @@
       <ngb-tab>
          <ng-template ngbTabTitle>Resources</ng-template>
          <ng-template ngbTabContent>
-            <div class="tab-cont">
+            <div class="tab-cont border border-primary">
                 <p>Resources module is currently being developed</p>
             </div>
             
@@ -69,7 +85,7 @@
    </ngb-tab>
    <ngb-tab title="Relationships">
       <ng-template ngbTabContent>
-        <div class="tab-cont">
+        <div class="tab-cont border border-primary">
          <p>Reslationships module is currently being developed</p>
         </div>
       </ng-template>
